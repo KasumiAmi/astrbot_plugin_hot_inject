@@ -5,7 +5,7 @@
     "hint": "追加模式将内容追加到提示词末尾（推荐用于动态内容），替换模式会覆盖 system_prompt（适合固定角色设定）。",
     "options": ["append", "replace", "extra"],
     "labels": ["追加 (Append)", "替换 (Replace)", "额外内容 (Extra Content)"],
-    "default": "append"
+    "default": "extra"
   },
   "inject_enabled": {
     "description": "启用热注入",

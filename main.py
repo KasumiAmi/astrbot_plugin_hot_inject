@@ -48,7 +48,7 @@ class HotInjectPlugin(Star):
         if not self.injections:
             return
 
-        active_mode = self.config.get("default_mode", "append")
+        active_mode = self.config.get("default_mode", "extra")
 
         extra_parts = []
 
@@ -94,19 +94,26 @@ class HotInjectPlugin(Star):
         action = parts[1].lower()
 
         if action == "add":
-            await self._handle_add(event, parts)
+            async for ret in self._handle_add(event, parts):
+                yield ret
         elif action == "remove":
-            await self._handle_remove(event, parts)
+            async for ret in self._handle_remove(event, parts):
+                yield ret
         elif action == "list":
-            await self._handle_list(event)
+            async for ret in self._handle_list(event):
+                yield ret
         elif action == "toggle":
-            await self._handle_toggle(event, parts)
+            async for ret in self._handle_toggle(event, parts):
+                yield ret
         elif action == "clear":
-            await self._handle_clear(event)
+            async for ret in self._handle_clear(event):
+                yield ret
         elif action == "mode":
-            await self._handle_mode(event, parts)
+            async for ret in self._handle_mode(event, parts):
+                yield ret
         elif action == "enabled":
-            await self._handle_enabled(event, parts)
+            async for ret in self._handle_enabled(event, parts):
+                yield ret
         else:
             yield event.plain_result(f"未知操作: {action}，使用 /inject 查看帮助。")
 
@@ -176,7 +183,7 @@ class HotInjectPlugin(Star):
             return
 
         enabled_str = "开启" if self.config.get("inject_enabled", True) else "关闭"
-        default_mode = self.config.get("default_mode", "append")
+        default_mode = self.config.get("default_mode", "extra")
 
         lines = [f"热注入状态: {enabled_str} | 默认模式: {default_mode}\n"]
 
