@@ -1,0 +1,8 @@
+name: astrbot_plugin_hot_inject
+author: Kasumi
+display_name: Hot Inject
+short_desc: 在不重启的情况下动态注入系统提示词。
+desc: 在不重启 AstrBot、不删除会话记录的前提下，动态修改/追加系统提示词或用户消息内容。支持追加和替换两种模式。
+version: "1.0.0"
+astrbot_version: ">=4.16"
+repo: https://github.com/MiMoCode/astrbot_plugin_hot_inject

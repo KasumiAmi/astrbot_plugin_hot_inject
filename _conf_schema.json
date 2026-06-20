@@ -1,0 +1,22 @@
+{
+  "default_mode": {
+    "description": "默认注入模式",
+    "type": "string",
+    "hint": "追加模式将内容追加到提示词末尾（推荐用于动态内容），替换模式会覆盖 system_prompt（适合固定角色设定）。",
+    "options": ["append", "replace", "extra"],
+    "labels": ["追加 (Append)", "替换 (Replace)", "额外内容 (Extra Content)"],
+    "default": "append"
+  },
+  "inject_enabled": {
+    "description": "启用热注入",
+    "type": "bool",
+    "hint": "关闭后暂停所有注入，但保留已配置的注入内容。",
+    "default": true
+  },
+  "extra_content_separator": {
+    "description": "额外内容分隔符",
+    "type": "string",
+    "hint": "当注入模式为 extra 时，用于分隔多个注入内容的分隔符。",
+    "default": "\n---\n"
+  }
+}
